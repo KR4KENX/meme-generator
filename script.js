@@ -49,7 +49,7 @@ let memeApp = {
         this.memeNumber--;
         this.setDOMData();
         
-        if(this.memeNumber < 0) this.memeNumber = this.memeData.length - 1;
+        if(this.memeNumber <= 0) this.memeNumber = this.memeData.length;
     },
     setDOMData: function(){
         let imgData = this.memeData[this.memeNumber];
@@ -61,7 +61,12 @@ let memeApp = {
 }
 
 let inputTop = document.getElementById("top-text");
+let inputTopX = document.getElementById("top-text-x");
+let inputTopY = document.getElementById("top-text-y");
+
 let inputBottom = document.getElementById("bottom-text");
+let inputBottomX = document.getElementById("bottom-text-x");
+let inputBottomY = document.getElementById("bottom-text-y");
 
 let imgTopText = document.getElementById("img-top-text");
 let imgBottomText = document.getElementById("img-bottom-text");
@@ -69,6 +74,19 @@ let imgBottomText = document.getElementById("img-bottom-text");
 inputTop.addEventListener("change", function() {
     imgTopText.innerHTML = inputTop.value;
 });
+inputTopX.addEventListener("change", function() {
+    imgTopText.style.marginLeft = inputTopX.value+"px";
+});
+inputTopY.addEventListener("change", function() {
+    imgTopText.style.top = inputTopY.value+"px";
+});
+
 inputBottom.addEventListener("change", function() {
     imgBottomText.innerHTML = inputBottom.value;
+});
+inputBottomX.addEventListener("change", function() {
+    imgBottomText.style.marginLeft = inputBottomX.value+"px";
+});
+inputBottomY.addEventListener("change", function() {
+    imgBottomText.style.bottom = inputBottomY.value+"px"
 });
