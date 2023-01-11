@@ -20,15 +20,16 @@ body{
     margin-top: 5em;
 }
 .meme-img{
-    width: 100%;
-    height: 100%;
+    min-width: 50vw;
+    min-height: 100vh; 
+    position: static;
+    background: url("https://i.imgflip.com/30b1gx.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 .form-part{
     display: flex;
     align-items: center;
-}
-form{
-    margin-bottom: 4em;
 }
 label{
     color: #fff;
@@ -42,17 +43,22 @@ span{
     color: #000;
     font-size: 1.5em;
 }
-#img-top-text{
-    width: 100%;
-    position: relative;
+.meme-img p{
+    max-width: 25%;
+    word-break: normal;
+    position: absolute;
     text-align: center;
-    margin-bottom: -75px;
+    left: 50%;
+    transform: translate(-50%,-50%);
     font-size: 2em;
 }
+#img-top-text{
+    /* margin-bottom: -75px; */
+    /* margin-top: 0; */
+    top: 25%
+}
 #img-bottom-text{
-    width: 100%;
-    position: relative;
-    text-align: center;
-    margin-top: -75px;
-    font-size: 2em;
+    /* margin-top: -75px; */
+    /* margin-bottom: 0; */
+    top: 100%;
 }

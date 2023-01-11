@@ -34,6 +34,7 @@ let memeApp = {
                     break;
                 case 40:
                     //down
+                    break;
             }
         });
 
@@ -54,7 +55,9 @@ let memeApp = {
     setDOMData: function(){
         let imgData = this.memeData[this.memeNumber];
         this.memeTitleDomEl.innerHTML = imgData.name;
-        this.memeImgDomEl.src = imgData.url;
+        this.memeImgDomEl.style.cssText = `background: url("${imgData.url}");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;";`
 
         document.title = "MEME #" + this.memeNumber;
     }
@@ -71,22 +74,25 @@ let inputBottomY = document.getElementById("bottom-text-y");
 let imgTopText = document.getElementById("img-top-text");
 let imgBottomText = document.getElementById("img-bottom-text");
 
-inputTop.addEventListener("change", function() {
+inputTop.addEventListener("input", function() {
     imgTopText.innerHTML = inputTop.value;
 });
-inputTopX.addEventListener("change", function() {
-    imgTopText.style.marginLeft = inputTopX.value+"px";
+inputTopX.addEventListener("input", function() {
+    imgTopText.style.marginLeft = inputTopX.value+"%";
 });
-inputTopY.addEventListener("change", function() {
-    imgTopText.style.top = inputTopY.value+"px";
+inputTopY.addEventListener("input", function() {
+    let topValue = 25 + parseInt(inputTopY.value);
+    imgTopText.style.top = topValue+"%";
 });
 
-inputBottom.addEventListener("change", function() {
+inputBottom.addEventListener("input", function() {
     imgBottomText.innerHTML = inputBottom.value;
 });
-inputBottomX.addEventListener("change", function() {
-    imgBottomText.style.marginLeft = inputBottomX.value+"px";
+inputBottomX.addEventListener("input", function() {
+    imgBottomText.style.marginLeft = inputBottomX.value+"%";
 });
-inputBottomY.addEventListener("change", function() {
-    imgBottomText.style.bottom = inputBottomY.value+"px"
+inputBottomY.addEventListener("input", function() {
+    let bottomValue = 100 + parseInt(inputBottomY.value);
+    console.log(bottomValue);
+    imgBottomText.style.top = bottomValue+"%"
 });
