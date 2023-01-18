@@ -2,6 +2,8 @@ window.onload = function(){
     memeApp.loadData();
 }
 
+//downloading images from API
+
 let memeApp = {
     memeData: null,
     memeNumber: 0,
@@ -63,36 +65,74 @@ let memeApp = {
     }
 }
 
-let inputTop = document.getElementById("top-text");
-let inputTopX = document.getElementById("top-text-x");
-let inputTopY = document.getElementById("top-text-y");
+// Text handler script
 
-let inputBottom = document.getElementById("bottom-text");
-let inputBottomX = document.getElementById("bottom-text-x");
-let inputBottomY = document.getElementById("bottom-text-y");
+
+let topForm = document.getElementById("top-form");
+let bottomForm = document.getElementById("bottom-form");
 
 let imgTopText = document.getElementById("img-top-text");
 let imgBottomText = document.getElementById("img-bottom-text");
 
-inputTop.addEventListener("input", function() {
-    imgTopText.innerHTML = inputTop.value;
-});
-inputTopX.addEventListener("input", function() {
-    imgTopText.style.marginLeft = inputTopX.value+"%";
-});
-inputTopY.addEventListener("input", function() {
-    let topValue = 25 + parseInt(inputTopY.value);
-    imgTopText.style.top = topValue+"%";
-});
+function newTopText(){
+    let formClone = topForm.cloneNode(true);
+    let textClone = imgTopText.cloneNode(true);
 
-inputBottom.addEventListener("input", function() {
-    imgBottomText.innerHTML = inputBottom.value;
-});
-inputBottomX.addEventListener("input", function() {
-    imgBottomText.style.marginLeft = inputBottomX.value+"%";
-});
-inputBottomY.addEventListener("input", function() {
-    let bottomValue = 100 + parseInt(inputBottomY.value);
-    console.log(bottomValue);
-    imgBottomText.style.top = bottomValue+"%"
-});
+    formClone.id = "top-formCloned"
+    textClone.id = "img-top-text-clone"
+
+    document.querySelector(".top-forms").appendChild(formClone);
+    document.querySelector(".meme-img").appendChild(textClone);
+
+    document.querySelectorAll(".top-forms input[type='button']").forEach((element) => {
+        element.remove();
+    });
+
+    let inputList = document.querySelectorAll("#top-formCloned .form-part input")
+    
+    for(let el of inputList){
+        el.id += "-clone";
+        console.log(el);
+    }
+
+}
+function newBottomText(){
+    //Create elemnts copy on website
+    let formClone = bottomForm.cloneNode(true);
+    let textClone = imgBottomText.cloneNode(true);
+
+    formClone.id = "bottom-formCloned"
+    textClone.id = "img-bottom-text-clone"
+
+    document.querySelector(".bottom-forms").appendChild(formClone);
+    document.querySelector(".meme-img").appendChild(textClone);
+    //Remove possibility to create infinite elements, only 1 more for top and bottom!
+    document.querySelectorAll(".bottom-forms input[type='button']").forEach((element) => {
+        element.remove();
+    });
+    //Changing id of each input field
+    let inputList = document.querySelectorAll("#bottom-formCloned .form-part input")
+    
+    for(let el of inputList){
+        el.id += "-clone";
+        console.log(el);
+    }
+}
+
+function setTextOnImg(textEl, textIn, textX, textY, topPropShift){
+    textEl.innerHTML = textIn.value;
+    textEl.style.marginLeft = (textX.value*2) + "%";
+    textEl.style.top = topPropShift - (textY.value*2) + "%";
+}
+
+document.querySelector(".top-forms").addEventListener("input",() => {
+    setTextOnImg(imgTopText,document.getElementById("top-text"),document.getElementById("top-text-x"),document.getElementById("top-text-y"),40);
+    setTextOnImg(document.getElementById("img-top-text-clone"),document.getElementById("top-text-clone"),document.getElementById("top-text-x-clone"),document.getElementById("top-text-y-clone"),40)
+})
+
+document.querySelector(".bottom-forms").addEventListener("input",()=>{
+   setTextOnImg(imgBottomText,document.getElementById("bottom-text"),document.getElementById("bottom-text-x"),document.getElementById("bottom-text-y"),100)
+   setTextOnImg(document.getElementById("img-bottom-text-clone"),document.getElementById("bottom-text-clone"),document.getElementById("bottom-text-x-clone"),document.getElementById("bottom-text-y-clone"),100)
+})
+
+

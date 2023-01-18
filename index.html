@@ -10,34 +10,38 @@
 <body>
     <div class="meme-div">
         <div class="meme-title"></div>
+        <div class="top-forms">
+            <form id="top-form" action="">
+                <div class="form-part">
+                    <label for="">Top text</label>
+                    <input type="text" name="top-text" id="top-text">
+                    <label for="">Top X</label>
+                    <input type="number" name="top-text-x" id="top-text-x">
+                    <label for="">Top Y</label>
+                    <input type="number" name="top-text-y" id="top-text-y">
+                    <input type="button" value="Add new text" onclick="newTopText()">
+                </div>
 
-        <form action="">
-
-        <div class="form-part">
-            <label for="">Top text</label>
-            <input type="text" name="top-text" id="top-text">
-            <label for="">Top X</label>
-            <input type="number" name="top-text-x" id="top-text-x">
-            <label for="">Top Y</label>
-            <input type="number" name="top-text-y" id="top-text-y">
+            </form>
         </div>
-
-        </form>
         <div class="meme-img">
             <p id="img-top-text">Top</p>
             <!--<img src="" alt="" class="meme-img"> -->
             <p id="img-bottom-text">Bottom</p>
         </div>
-        <form action="">
-        <div class="form-part">
-            <label for="">Bottom text</label>
-            <input type="text" name="bottom-text" id="bottom-text">
-            <label for="">Bottom X</label>
-            <input type="number" name="bottom-text-x" id="bottom-text-x">
-            <label for="">Bottom Y</label>
-            <input type="number" name="bottom-text-y" id="bottom-text-y">
+        <div class="bottom-forms">
+            <form id="bottom-form" action="">
+                <div class="form-part">
+                    <label for="">Bottom text</label>
+                    <input type="text" name="bottom-text" id="bottom-text">
+                    <label for="">Bottom X</label>
+                    <input type="number" name="bottom-text-x" id="bottom-text-x">
+                    <label for="">Bottom Y</label>
+                    <input type="number" name="bottom-text-y" id="bottom-text-y">
+                    <input type="button" value="Add new text" onclick="newBottomText()">
+                </div>
+            </form>
         </div>
-        </form>
         <div class="meme-footer">
             Data from https://api.imgflip.com/
         </div>
